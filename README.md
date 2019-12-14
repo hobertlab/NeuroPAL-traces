@@ -1,16 +1,25 @@
 # NeuroPAL-traces
 
-This contains the scripts used to extract traces from GCaMP movies contained in [Yemeni et. al (2019)](https://www.biorxiv.org/content/10.1101/676312v1).
+This contains the scripts used to extract traces from GCaMP movies contained in [Yemini et. al (2019)](https://www.biorxiv.org/content/10.1101/676312v1).
+The NeuroPAL ID software, used in conjunction with these scripts, is available here: https://github.com/amin-nejat/CELL_ID
 
 ## Usage
 
-Add information about where input data is located in `src/analyze.m`.
+Simply add information about where input data is located in `src/analyze.m`.
 
-* `id_run`:
-* `gcamp_run`: An `nd2` file that contains a 2D image timeseries of volumes obtained by sweeping through z.
+* `id_run`: the <experiment>_ID.mat file generated using the NeuroPAL ID software.
+* `gcamp_run`: An `nd2` file that contains a 2D image time series of volumes obtained by sweeping through z.
 
 The remainder of `analyze.m` has the workflow:
 
-1. `preprocess_video.m`: The 2D timeseries will be converted to a 3D timeseries that is slightly filtered and compressed.
+1. `preprocess_video.m`: The 2D time series will be converted to a 3D time series that is slightly filtered and compressed.
 2. `get_ID_annotations.m`: Data from the ID run (including annotations of neurons) is ingested and matched to the first frame.
 3. `get_traces.m`: Neurons are tracked throughout the time series, and calcium values are extracted.
+
+The output of this script is an <experiment>traces.mat file containing the following:
+input_neurons = the neurons ID'd in the <experiment>_ID.mat file, generated using the NeuroPAL ID software.
+positions = an array of neuron positions (x,y,z), per video frame, corresponding to the input_neurons array.
+trace_array = an array of GCaMP intensities, per video frame, corresponding to the input_neurons array.
+times = the real time per video frame.
+
+For further information please contact the corresponding authors.
