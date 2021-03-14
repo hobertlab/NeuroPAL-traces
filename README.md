@@ -1,6 +1,7 @@
 # NeuroPAL-traces
 
-This contains the scripts used to extract traces from GCaMP movies contained in [Yemini et. al (2019)](https://www.biorxiv.org/content/10.1101/676312v1).
+This contains the scripts used to extract traces from GCaMP movies contained in the NeuroPAL publication, "NeuroPAL: A Multicolor Atlas for Whole-Brain Neuronal Identification in C. elegans". The publication is available here: https://www.cell.com/cell/fulltext/S0092-8674(20)31682-2
+
 The NeuroPAL ID software, used in conjunction with these scripts, is available here: https://github.com/amin-nejat/CELL_ID
 
 ## Usage
