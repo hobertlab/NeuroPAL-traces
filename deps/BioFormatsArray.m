@@ -99,11 +99,11 @@ classdef BioFormatsArray < ArrayBase
         
         function times = get_times(this)
             hashmap = this.BioformatsData{2};
-            size_T = get_size_T(this);
-            digits = ceil(log10(size_T));
+            N_slices = prod(this.Size(3:5));
+            digits = ceil(log10(N_slices));
             fmt = sprintf('timestamp #%%0%dd', digits);
-            times = zeros(size_T, 1);
-            for t = 1:size_T
+            times = zeros(N_slices, 1);
+            for t = 1:N_slices
                 times(t) = hashmap.get(sprintf(fmt, t));
             end
         end
